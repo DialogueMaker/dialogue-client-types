@@ -4,6 +4,38 @@ local IDialogueServer = require(script.Parent["dialogue-server-types"]);
 
 type DialogueServer = IDialogueServer.DialogueServer;
 
+export type ConstructorDialogueClientSettings = {
+
+  general: {
+
+    -- This is the default theme that will be used when talking with NPCs
+    theme: ModuleScript;
+
+    shouldEndConversationOnCharacterRemoval: boolean?;
+
+  };
+  responses: {
+
+    -- Replace this with an audio ID that'll play every time a player selects a response. Replace with 0 to not play any sound.
+    clickSound: number?;
+
+  }?;
+  keybinds: {
+
+    --[[
+      Keyboard keybind to start a conversation with a character.
+    ]]
+    interactKey: Enum.KeyCode?;
+
+    --[[
+      Gamepad keybind to start a conversation with a character.
+    ]]
+    interactKeyGamepad: Enum.KeyCode?;
+
+  }?;
+
+}
+
 export type DialogueClientSettings = {
 
   general: {
