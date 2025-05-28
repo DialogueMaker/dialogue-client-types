@@ -1,6 +1,6 @@
 --!strict
 
-local IDialogueServer = require(script.Parent["dialogue-server-types"]);
+local IDialogueServer = require("@pkg/dialogue_server_types");
 
 type DialogueServer = IDialogueServer.DialogueServer;
 
