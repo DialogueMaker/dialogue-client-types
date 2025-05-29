@@ -1,6 +1,6 @@
 --!strict
 
-local IDialogueServer = require("@pkg/dialogue_server_types");
+local IDialogueServer = require(script.Parent.roblox_packages.dialogue_server_types);
 
 type DialogueServer = IDialogueServer.DialogueServer;
 

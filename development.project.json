@@ -1,9 +1,0 @@
-{
-  "name": "dialogue_client_types",
-  "tree": {
-    "$path": "roblox_packages",
-    "dialogue_client_types": {
-      "$path": "src"
-    }
-  }
-}
