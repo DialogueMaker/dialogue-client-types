@@ -1,10 +1,10 @@
 --!strict
 
-local IDialogueServer = require(script.Parent.roblox_packages.dialogue_server_types);
+local IConversation = require(script.Parent.roblox_packages.conversation_types);
 
-type DialogueServer = IDialogueServer.DialogueServer;
+type Conversation = IConversation.Conversation;
 
-export type ConstructorDialogueClientSettings = {
+export type ConstructorClientSettings = {
 
   general: {
 
@@ -36,7 +36,7 @@ export type ConstructorDialogueClientSettings = {
 
 }
 
-export type DialogueClientSettings = {
+export type ClientSettings = {
 
   general: {
 
@@ -67,7 +67,7 @@ export type DialogueClientSettings = {
   };
 };
 
-export type OptionalDialogueClientSettings = {
+export type OptionalClientSettings = {
 
   general: {
 
@@ -98,26 +98,21 @@ export type OptionalDialogueClientSettings = {
   }?;
 };
 
-export type DialogueClientProperties = {
-  theme: ModuleScript?;
-  dialogueServer: DialogueServer?;
+export type ClientMethods = {
+  freezePlayer: (self: Client) -> ();
+  unfreezePlayer: (self: Client) -> ();
+  interact: (self: Client, conversation: Conversation) -> ();
+  getSettings: (self: Client) -> ClientSettings;
+  setSettings: (self: Client, newSettings: ClientSettings) -> ();
+  getConversation: (self: Client) -> Conversation?;
+  setConversation: (self: Client, newConversation: Conversation?) -> ();
 }
 
-export type DialogueClientMethods = {
-  freezePlayer: (self: DialogueClient) -> ();
-  unfreezePlayer: (self: DialogueClient) -> ();
-  interact: (self: DialogueClient, dialogueServer: DialogueServer) -> ();
-  getSettings: (self: DialogueClient) -> DialogueClientSettings;
-  setSettings: (self: DialogueClient, newSettings: DialogueClientSettings) -> ();
-  getDialogueServer: (self: DialogueClient) -> DialogueServer?;
-  setDialogueServer: (self: DialogueClient, newDialogueServer: DialogueServer?) -> ();
+export type ClientEvents = {
+  SettingsChanged: RBXScriptSignal<ClientSettings>;
+  ConversationChanged: RBXScriptSignal;
 }
 
-export type DialogueClientEvents = {
-  SettingsChanged: RBXScriptSignal<DialogueClientSettings>;
-  DialogueServerChanged: RBXScriptSignal;
-}
-
-export type DialogueClient = DialogueClientProperties & DialogueClientMethods & DialogueClientEvents;
+export type Client = ClientMethods & ClientEvents;
 
 return {};
